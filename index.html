@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Japanese Student Life Manager 🇯🇵</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-jp@5.0.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-mark">学</div>
+      <div class="logo-text">Student Life<small>日本 · Command Center</small></div>
+    </div>
+    <nav class="nav" id="nav">
+      <button class="nav-item active" data-view="dashboard"><ion-icon name="grid-outline"></ion-icon>Dashboard</button>
+      <button class="nav-item" data-view="school"><ion-icon name="school-outline"></ion-icon>Schedule / 時間割</button>
+      <button class="nav-item" data-view="work"><ion-icon name="briefcase-outline"></ion-icon>Part-Time / バイト</button>
+      <button class="nav-item" data-view="expenses"><ion-icon name="wallet-outline"></ion-icon>Expenses / 支出</button>
+      <button class="nav-item" data-view="japanese"><ion-icon name="book-outline"></ion-icon>Japanese / 日本語</button>
+      <button class="nav-item" data-view="jlpt"><ion-icon name="trophy-outline"></ion-icon>JLPT Countdown</button>
+      <button class="nav-item" data-view="tasks"><ion-icon name="checkmark-circle-outline"></ion-icon>Tasks</button>
+      <button class="nav-item" data-view="calendar"><ion-icon name="calendar-outline"></ion-icon>Calendar</button>
+      <button class="nav-item" data-view="reminders"><ion-icon name="alarm-outline"></ion-icon>Reminders</button>
+      <button class="nav-item" data-view="stats"><ion-icon name="stats-chart-outline"></ion-icon>Statistics</button>
+      <div class="nav-divider"></div>
+      <button class="nav-item" data-view="settings"><ion-icon name="settings-outline"></ion-icon>Settings</button>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-title" id="topbarTitle">Dashboard<small id="topbarSub">Welcome back</small></div>
+      <div class="search-box">
+        <ion-icon name="search-outline"></ion-icon>
+        <input type="text" id="globalSearch" placeholder="Search tasks, classes, expenses..." aria-label="Global search">
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </header>
+
+    <div class="content" id="content">
+      <!-- Views injected here -->
+    </div>
+  </main>
+</div>
+
+<!-- Bottom nav mobile -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-items">
+    <button class="bottom-nav-item active" data-view="dashboard"><ion-icon name="grid-outline"></ion-icon>Home</button>
+    <button class="bottom-nav-item" data-view="tasks"><ion-icon name="checkmark-circle-outline"></ion-icon>Tasks</button>
+    <button class="bottom-nav-item" data-view="calendar"><ion-icon name="calendar-outline"></ion-icon>Calendar</button>
+    <button class="bottom-nav-item" data-view="japanese"><ion-icon name="book-outline"></ion-icon>Study</button>
+    <button class="bottom-nav-item" data-view="settings"><ion-icon name="settings-outline"></ion-icon>More</button>
+  </div>
+</nav>
+
+<!-- FAB -->
+<button class="fab" id="fab" aria-label="Quick add">
+  <ion-icon name="add"></ion-icon>
+</button>
+<div class="fab-menu" id="fabMenu">
+  <button class="fab-menu-item" data-type="task"><ion-icon name="checkmark-circle-outline"></ion-icon>New Task</button>
+  <button class="fab-menu-item" data-type="class"><ion-icon name="school-outline"></ion-icon>New Class</button>
+  <button class="fab-menu-item" data-type="work"><ion-icon name="briefcase-outline"></ion-icon>New Work Shift</button>
+  <button class="fab-menu-item" data-type="expense"><ion-icon name="wallet-outline"></ion-icon>New Expense</button>
+  <button class="fab-menu-item" data-type="study"><ion-icon name="book-outline"></ion-icon>Log Study Session</button>
+  <button class="fab-menu-item" data-type="reminder"><ion-icon name="alarm-outline"></ion-icon>New Reminder</button>
+  <button class="fab-menu-item" data-type="event"><ion-icon name="calendar-outline"></ion-icon>New Event</button>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Modal</div>
+      <button class="icon-btn" id="modalClose" aria-label="Close"><ion-icon name="close"></ion-icon></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="app.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
